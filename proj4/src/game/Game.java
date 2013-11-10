@@ -15,6 +15,7 @@ import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.*;
 
 //Testing commiting
+//Test comment again
 public class Game {
     int screenWidth = 800;
     int screenHeight = 600;

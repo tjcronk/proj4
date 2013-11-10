@@ -10,6 +10,7 @@ import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 import static java.lang.System.out;
+
 public class TileMap {
     Texture texture;
     int x;
@@ -46,7 +47,6 @@ public class TileMap {
         numCols = texture.getTextureWidth() / 64;
         rowIncrement = 1f / numRows;
         colIncrement = 1f / numCols;
-        //numTiles =  (int) numRows * numCols;
 
         x = 0;
         y = 0;
@@ -63,23 +63,6 @@ public class TileMap {
     public void move(int delta) {
         x += (delta * dx) / 100;
         y += (delta * dy) / 100;
-    }
-    
-    void getLocation(int tileNum, float row, float col){
-        switch(tileNum){
-            case 0: row = 0;
-                    col = 0;
-                    break;
-            case 1: row = 0;
-                    col = 1;
-                    break;
-            case 2: row = 1;
-                    col = 0;
-                    break;
-            case 3: row = 1;
-                    col = 1;
-                    break;
-        }
     }
 
     public void draw() {

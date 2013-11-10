@@ -1,7 +1,6 @@
 package game;
 
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.Color;
 
 public class PlayerPlanet extends Entity{
     
@@ -10,26 +9,15 @@ public class PlayerPlanet extends Entity{
     PlayerPlanet(int posX, int posY){
         super(posX, posY);
         addSprite("human_soldier_all.png", 0, 0, 1, 8);
-         
-       // Color.white.bind();
-       // sprite.texture.bind();
-
-        //GL11.glTranslatef(x+64, y+64, 0);
-        //GL11.glRotatef(-90, 0f, 0f, 1f);
-        //GL11.glTranslatef(-x-64, -y-64, 0);
 
         angle = -90;
         dAngle = 0;
     }
     
     public void draw(){
-        //GL11.glMatrixMode(GL11.GL_MODELVIEW);
-        //GL11.glLoadIdentity();
         GL11.glPushMatrix();
         sprite.draw();
-        GL11.glPopMatrix();
-        //GL11.glMatrixMode(GL11.GL_MODELVIEW);
-        
+        GL11.glPopMatrix();     
     }
     
     public void updateMousePos(int inX, int inY){
@@ -74,33 +62,6 @@ public class PlayerPlanet extends Entity{
         }
         else
             dAngle = 0;
-            
-        
-        /*double angleDiff = (mouseAngle - angle);
-        if (angleDiff < 5 && angleDiff > -5)
-            dAngle = 0;
-        else if(mouseAngle > angle){
-            if(angleDiff < 180)
-                dAngle = 5;
-            else
-                dAngle = -5;
-        }
-        else if(mouseAngle < angle){
-            if(angleDiff < 180)
-                dAngle = -5;
-            else
-                dAngle = 5;
-        }
-        else{
-            dAngle = 0;
-            angle = mouseAngle;
-        }*/
-        //angle = mouseAngle;
-        //count++;
-        //if(count > 30){
-            //System.out.println(angle + " " + mouseAngle + " " + angleDiff + " " + dAngle);
-          //  count = 0;
-        //}
     }
     
     

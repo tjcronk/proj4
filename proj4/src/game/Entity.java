@@ -31,16 +31,5 @@ public class Entity {
     public void move(int delta){
         x += (delta * dx) / 100;
         y += (delta * dy) / 100;
-        rotate(delta);
-    }
-    
-    public void rotate(int delta){
-        angle += dAngle;
-        
-        if(angle > 180)
-            angle -= 360;
-        else if(angle < -180)
-            angle += 360;
-        
     }
 }

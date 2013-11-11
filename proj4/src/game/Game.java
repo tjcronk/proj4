@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.opengl.GL11.*;
 
-//Dalton Test
+//Dalton Testing
 //Testing commiting
 //Test comment again
 public class Game {

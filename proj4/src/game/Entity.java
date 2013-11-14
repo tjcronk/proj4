@@ -9,11 +9,15 @@ public class Entity {
     double angle;
     float dAngle;
     int delta;
+    Game game;
+    PlayerPlanet owner;
+    boolean alive = true;
     
-    Entity(int posX, int posY){
+    Entity(int posX, int posY, Game inGame){
         x = posX;
         y = posY;
         dx = dy = 0;
+        game = inGame;
     }
     
     public void addSprite(String fileName, int inRow, int inCol, int numRows, int numCols){
@@ -29,7 +33,9 @@ public class Entity {
     }
     
     public void move(int delta){
-        x += (delta * dx) / 100;
-        y += (delta * dy) / 100;
+        dx = (delta * dx) / 100;
+        dy = (delta * dy) / 100;
+        x += dx;
+        y += dy;
     }
 }

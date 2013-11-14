@@ -55,6 +55,7 @@ public class Sprite {
     }
     
     public void draw() {
+        GL11.glPushMatrix();
         Color.white.bind();
         texture.bind();
         GL11.glTranslatef(myEntity.x+64, myEntity.y+64, 0);
@@ -76,5 +77,32 @@ public class Sprite {
         GL11.glVertex2f(myEntity.x, myEntity.y + texture.getTextureHeight() * rowIncrement * 2);
 
         GL11.glEnd();
+        GL11.glPopMatrix(); 
+    }
+    
+    public void drawOffset(){
+        GL11.glPushMatrix();
+        Color.white.bind();
+        texture.bind();
+        GL11.glTranslatef(myEntity.owner.x+64, myEntity.owner.y+64, 0);
+        GL11.glRotatef((float)-myEntity.angle, 0f, 0f, 1f);
+        GL11.glTranslatef(-myEntity.x+17, -myEntity.y+12, 0);
+        
+        GL11.glBegin(GL11.GL_QUADS);
+
+        GL11.glTexCoord2f(colRatio, rowRatio);
+        GL11.glVertex2f(myEntity.x, myEntity.y);
+
+        GL11.glTexCoord2f(colRatio + colIncrement, rowRatio);
+        GL11.glVertex2f(myEntity.x + texture.getTextureWidth() * colIncrement * 2, myEntity.y);
+
+        GL11.glTexCoord2f(colRatio + colIncrement, rowRatio + rowIncrement);
+        GL11.glVertex2f(myEntity.x + texture.getTextureWidth() * colIncrement * 2, myEntity.y + texture.getTextureHeight() * rowIncrement * 2);
+
+        GL11.glTexCoord2f(colRatio, rowRatio + rowIncrement);
+        GL11.glVertex2f(myEntity.x, myEntity.y + texture.getTextureHeight() * rowIncrement * 2);
+
+        GL11.glEnd();
+        GL11.glPopMatrix(); 
     }
 }

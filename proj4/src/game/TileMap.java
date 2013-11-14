@@ -9,36 +9,36 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
+
 import static java.lang.System.out;
 
 public class TileMap {
     Texture texture;
     int x;
     int y;
-    int dx;
-    int dy;
+    double dx;
+    double dy;
+    double dAngle;
     float numRows;
     float numCols;
     float rowIncrement;
     float colIncrement;
     int numTiles;
-
+    PlayerPlanet player;
     int[][] map;
 
-    TileMap() {
+    TileMap(PlayerPlanet inPlayer) {
         try {
             // load texture from PNG file
             texture = TextureLoader.getTexture("PNG",
                     ResourceLoader.getResourceAsStream("res/terrain.png"));
 
-            System.out.println("Texture loaded: " + texture);
-            System.out.println(">> Image width: " + texture.getImageWidth());
-            System.out.println(">> Image height: " + texture.getImageHeight());
-            System.out
-                    .println(">> Texture width: " + texture.getTextureWidth());
-            System.out.println(">> Texture height: "
-                    + texture.getTextureHeight());
-            System.out.println(">> Texture ID: " + texture.getTextureID());
+            out.println("Texture loaded: " + texture);
+            out.println(">> Image width: " + texture.getImageWidth());
+            out.println(">> Image height: " + texture.getImageHeight());
+            out.println(">> Texture width: " + texture.getTextureWidth());
+            out.println(">> Texture height: " + texture.getTextureHeight());
+            out.println(">> Texture ID: " + texture.getTextureID());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,6 +50,7 @@ public class TileMap {
 
         x = 0;
         y = 0;
+        player = inPlayer;
     }
 
     void setMap(int[][] inMap) {
@@ -61,6 +62,9 @@ public class TileMap {
     }
 
     public void move(int delta) {
+        dx *= -Math.cos(Math.toRadians(player.angle + dAngle));
+        dy *= Math.sin(Math.toRadians(player.angle + dAngle));
+        //wwout.println("dx: " + dx + " dy: " + dy);
         x += (delta * dx) / 100;
         y += (delta * dy) / 100;
     }
